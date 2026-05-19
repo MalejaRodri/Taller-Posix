@@ -1,27 +1,39 @@
-README - Taller POSIX: Semáforos, Hilos y Concurrencia
-Sistemas Operativos
-Taller POSIX – Concurrencia y Sincronización en Linux
+# 🚀 Taller POSIX - Concurrencia y Sincronización en Linux
 
-Pontificia Universidad Javeriana
+<div align="center">
 
-Descripción General
+![Linux](https://img.shields.io/badge/Linux-POSIX-black?style=for-the-badge&logo=linux)
+![C](https://img.shields.io/badge/Language-C-blue?style=for-the-badge&logo=c)
+![Threads](https://img.shields.io/badge/Pthreads-Concurrency-green?style=for-the-badge)
+![IPC](https://img.shields.io/badge/IPC-Semaphores%20%26%20Shared%20Memory-orange?style=for-the-badge)
 
-Este taller tiene como objetivo implementar y comprender mecanismos de concurrencia y sincronización en sistemas operativos Linux utilizando programación en C bajo el estándar POSIX.
+### 🖥️ Sistemas Operativos – Pontificia Universidad Javeriana
 
-Durante el desarrollo del taller se implementaron diferentes soluciones concurrentes aplicando conceptos fundamentales como:
+Implementación de mecanismos de concurrencia y sincronización utilizando herramientas POSIX en Linux.
 
-procesos,
-hilos POSIX,
-memoria compartida,
-semáforos,
-mutex,
-variables de condición,
-buffers compartidos,
-y el modelo productor-consumidor.
+</div>
 
-El proyecto se desarrolló completamente sobre Linux utilizando herramientas POSIX para la gestión y sincronización de recursos concurrentes.
+---
 
-Estructura del Proyecto
+# 📌 Descripción General
+
+Este proyecto tiene como objetivo implementar y comprender conceptos fundamentales de concurrencia y sincronización en sistemas operativos Linux utilizando programación en C bajo el estándar POSIX.
+
+A lo largo del taller se desarrollaron diferentes soluciones concurrentes aplicando:
+
+- 🔄 Productor–Consumidor
+- 🧵 Hilos POSIX (`pthread`)
+- 🔒 Mutex y Variables de Condición
+- 📡 Comunicación entre Procesos (IPC)
+- 🧠 Memoria Compartida
+- 🚦 Semáforos POSIX
+- ⚡ Procesamiento Paralelo
+
+---
+
+# 📂 Estructura del Proyecto
+
+```bash
 .
 ├── producer.c
 ├── consumer.c
@@ -30,129 +42,236 @@ Estructura del Proyecto
 ├── posix.h
 ├── Makefile
 └── README.md
-Actividad 1 – Productor–Consumidor con Semáforos POSIX
-Descripción
+```
 
-En esta actividad se implementó el modelo productor-consumidor utilizando procesos independientes sincronizados mediante semáforos POSIX y memoria compartida.
+---
 
-El productor genera datos y los almacena en un buffer compartido, mientras que el consumidor consume dichos datos de manera sincronizada.
+# 🧩 Actividad 1 – Productor–Consumidor con Semáforos POSIX
 
-Archivos
-producer.c
+## 📖 Descripción
 
-Proceso encargado de producir y almacenar datos en memoria compartida.
+Se implementó el modelo clásico **Productor–Consumidor** utilizando:
 
-consumer.c
+- procesos independientes,
+- memoria compartida POSIX,
+- semáforos con nombre,
+- buffers circulares.
 
-Proceso encargado de consumir los datos almacenados por el productor.
+El productor genera datos y los almacena en memoria compartida, mientras que el consumidor consume dichos elementos de forma sincronizada.
 
-posix.h
+---
 
-Archivo de cabecera compartido que contiene:
+## 📁 Archivos
 
-librerías POSIX,
-constantes globales,
-estructuras compartidas.
-Conceptos implementados
+| Archivo | Descripción |
+|---|---|
+| `producer.c` | Genera y almacena datos |
+| `consumer.c` | Consume los datos generados |
+| `posix.h` | Librerías, constantes y estructuras compartidas |
+
+---
+
+## ⚙️ Tecnologías Implementadas
+
+```bash
 shm_open()
 mmap()
 sem_open()
 sem_wait()
 sem_post()
-buffer circular
-sincronización entre procesos
-comunicación IPC
-Actividad 2 – Hilos POSIX y Concurrencia
-Descripción
+```
 
-En esta actividad se implementaron soluciones concurrentes utilizando hilos POSIX (pthread) para demostrar sincronización y procesamiento paralelo dentro de un mismo proceso.
+---
 
-Archivo: posixSincro.c
+## 🧠 Conceptos Aplicados
 
-Implementa el modelo productor-consumidor utilizando:
+- Comunicación entre procesos (IPC)
+- Memoria compartida POSIX
+- Semáforos POSIX
+- Exclusión mutua
+- Sincronización
+- Buffer circular
 
-múltiples hilos productores,
-un hilo consumidor (spooler),
-buffer compartido sincronizado.
+---
 
-Los productores generan mensajes concurrentemente y el spooler consume e imprime los mensajes almacenados.
+# 🧵 Actividad 2 – Hilos POSIX y Concurrencia
 
-Conceptos implementados
+## 📖 Descripción
+
+Se implementaron soluciones concurrentes utilizando hilos POSIX (`pthread`) para demostrar procesamiento paralelo y sincronización dentro de un mismo proceso.
+
+---
+
+# 📁 posixSincro.c
+
+Este programa implementa nuevamente el modelo **Productor–Consumidor**, pero utilizando:
+
+- múltiples hilos productores,
+- un hilo consumidor (spooler),
+- un buffer compartido sincronizado.
+
+Los productores generan mensajes concurrentemente mientras el spooler consume e imprime los datos.
+
+---
+
+## ⚙️ Funciones POSIX Utilizadas
+
+```bash
 pthread_create()
 pthread_join()
 pthread_mutex_lock()
 pthread_mutex_unlock()
 pthread_cond_wait()
 pthread_cond_signal()
-Complemento – Procesamiento Concurrente
-Archivo: concurrenciaPosix.c
+```
 
-Este programa implementa procesamiento paralelo utilizando múltiples hilos POSIX para buscar el valor máximo de un vector de manera concurrente.
+---
 
-Cada hilo procesa una parte diferente del vector y calcula un máximo parcial. Finalmente, el hilo principal reúne los resultados parciales y obtiene el máximo global.
+## 🧠 Conceptos Aplicados
 
-Conceptos implementados
-paralelismo de datos
-división de trabajo entre hilos
-procesamiento concurrente
-sincronización de hilos
-uso de estructuras compartidas
-Archivo posix.h
+- Programación multihilo
+- Sincronización entre hilos
+- Mutex POSIX
+- Variables de condición
+- Condiciones de carrera
+- Buffer compartido
 
-El archivo posix.h centraliza:
+---
 
-librerías necesarias,
-constantes globales,
-estructuras compartidas utilizadas por todos los programas.
+# ⚡ Procesamiento Concurrente – concurrenciaPosix.c
 
-Esto permite mantener una arquitectura modular y reutilizable dentro del proyecto.
+## 📖 Descripción
 
-Makefile
+Como complemento del taller se implementó un sistema de procesamiento paralelo utilizando múltiples hilos POSIX para buscar concurrentemente el valor máximo de un vector.
 
-El proyecto incluye un Makefile que automatiza:
+Cada hilo procesa una parte diferente del vector y calcula un máximo parcial. Finalmente, el hilo principal reúne los resultados y obtiene el máximo global.
 
-compilación,
-ejecución,
-limpieza de ejecutables,
-y reconstrucción completa del proyecto.
-Compilación
-Compilar todo el proyecto
+---
+
+## 🧠 Conceptos Aplicados
+
+- Paralelismo de datos
+- División de trabajo entre hilos
+- Procesamiento concurrente
+- Coordinación de hilos POSIX
+
+---
+
+# 📚 Archivo Compartido – posix.h
+
+El archivo `posix.h` centraliza:
+
+- librerías POSIX,
+- constantes globales,
+- estructuras compartidas,
+- configuraciones comunes del proyecto.
+
+Esto permite mantener una arquitectura modular y reutilizable.
+
+---
+
+# 🛠️ Makefile
+
+El proyecto incluye un `Makefile` que automatiza:
+
+- compilación,
+- limpieza,
+- reconstrucción,
+- ejecución de programas.
+
+---
+
+# ⚙️ Compilación
+
+## Compilar todo el proyecto
+
+```bash
 make
+```
 
 o:
 
+```bash
 make all
-Ejecución
-Actividad 1
+```
 
-Abrir dos terminales.
+---
 
-Terminal 1
+# ▶️ Ejecución
+
+# Actividad 1
+
+## Terminal 1
+
+```bash
 ./producer
-Terminal 2
+```
+
+## Terminal 2
+
+```bash
 ./consumer
-Actividad 2
+```
+
+---
+
+# Actividad 2
+
+```bash
 ./posixSincro
-Procesamiento Concurrente
+```
+
+---
+
+# Procesamiento Concurrente
+
+```bash
 ./concurrenciaPosix datos.txt 3
-Limpieza
-Eliminar ejecutables
+```
+
+---
+
+# 🧹 Limpieza
+
+## Eliminar ejecutables
+
+```bash
 make clean
-Recompilar todo
+```
+
+---
+
+## Reconstruir todo el proyecto
+
+```bash
 make rebuild
-Resultados
+```
 
-Con el desarrollo de este taller se logró implementar correctamente:
+---
 
-sincronización entre procesos,
-comunicación mediante memoria compartida,
-concurrencia con hilos POSIX,
-exclusión mutua,
-buffers compartidos,
-procesamiento paralelo,
-y el modelo productor-consumidor.
-Conclusiones
-Se aplicaron de manera práctica conceptos fundamentales de Sistemas Operativos relacionados con concurrencia y sincronización.
-Se comprendió el funcionamiento de semáforos POSIX, mutex y variables de condición.
-Se evidenció la importancia de proteger recursos compartidos para evitar condiciones de carrera.
-Se fortalecieron habilidades en programación concurrente utilizando herramientas POSIX sobre Linux.
+# 📊 Resultados Obtenidos
+
+✅ Sincronización correcta entre procesos  
+✅ Comunicación mediante memoria compartida  
+✅ Implementación funcional de semáforos POSIX  
+✅ Programación concurrente con hilos POSIX  
+✅ Exclusión mutua mediante mutex  
+✅ Procesamiento paralelo de datos  
+✅ Implementación del modelo productor–consumidor  
+
+---
+
+# 🧠 Conclusiones
+
+- Se aplicaron conceptos fundamentales de Sistemas Operativos relacionados con concurrencia y sincronización.
+- Se comprendió el funcionamiento de mecanismos POSIX en Linux.
+- Se implementaron arquitecturas concurrentes seguras y sincronizadas.
+- Se reforzó el uso práctico de procesos, hilos y comunicación IPC.
+
+---
+
+# 👨‍💻 Autor(es)
+
+**Pontificia Universidad Javeriana**  
+Materia: Sistemas Operativos  
+Taller POSIX – Concurrencia y Sincronización en Linux
